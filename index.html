@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>深層心理リスク許容度診断 | 生活習慣からわかる投資タイプ</title>
+
+<!-- SEO -->
+<meta name="description" content="投資の知識は不要。スポーツ・防災・ふだんの選び方など“生活習慣”と“深層心理”から、あなたのリスク許容度を5段階で診断。参考ポートフォリオの配分イメージも表示します。全24問・約4分。">
+<meta name="keywords" content="リスク許容度,診断,投資タイプ,深層心理,ポートフォリオ,資産運用,心理テスト">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0c1018">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="リスク許容度診断">
+<link rel="canonical" href="https://example.com/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="深層心理リスク許容度診断">
+<meta property="og:description" content="生活習慣と深層心理から、あなたのリスク許容度を5段階で診断。参考ポートフォリオも表示。全24問・約4分。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="深層心理リスク許容度診断">
+<meta property="og:image" content="https://example.com/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="深層心理リスク許容度診断">
+<meta name="twitter:description" content="生活習慣と深層心理から、あなたのリスク許容度を5段階で診断。参考ポートフォリオも表示。全24問・約4分。">
+<meta name="twitter:image" content="https://example.com/ogp.png">
+
+<!-- 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "深層心理リスク許容度診断",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Web",
+  "description": "生活習慣と深層心理からリスク許容度を5段階で診断する教育的セルフチェックツール。",
+  "inLanguage": "ja",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c1018; --ink-2:#121826; --panel:#161d2e; --panel-2:#1b2436;
+    --line:#2a3550; --text:#e8edf7; --muted:#8b97b3;
+    --gold:#d8a657; --gold-soft:#e8c489; --teal:#46b6a8; --rose:#d9657a;
+    --shadow:0 30px 70px -25px rgba(0,0,0,.8);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{
+    font-family:"Zen Kaku Gothic New",sans-serif;
+    background:
+      radial-gradient(1100px 700px at 80% -10%, rgba(216,166,87,.14), transparent 55%),
+      radial-gradient(900px 700px at 5% 110%, rgba(70,182,168,.12), transparent 55%),
+      var(--ink);
+    color:var(--text); min-height:100%;
+    display:flex; align-items:center; justify-content:center;
+    padding:calc(28px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+    -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .shell{width:100%; max-width:680px;}
+  .card{
+    position:relative; background:linear-gradient(180deg,var(--panel),var(--ink-2));
+    border:1px solid var(--line); border-radius:24px;
+    box-shadow:var(--shadow); overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(700px 200px at 50% -40%, rgba(216,166,87,.10), transparent 60%);}
+  .pad{padding:38px 34px}
+  @media(max-width:520px){.pad{padding:24px 18px}}
+  .eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  h1{font-family:"Shippori Mincho",serif;font-weight:800;line-height:1.28;letter-spacing:.01em;
+    font-size:clamp(25px,6vw,38px);margin-bottom:18px;}
+  h1 .accent{color:var(--gold-soft)}
+  .lead{color:var(--muted);font-size:15px;line-height:1.95;margin-bottom:26px}
+  @media(max-width:520px){.lead{font-size:14px;line-height:1.85}}
+  .axes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+  @media(max-width:520px){.axes{grid-template-columns:1fr}}
+  .axis{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:16px;}
+  .axis .t{font-family:"Shippori Mincho",serif;font-weight:700;font-size:15px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+  .dot{width:8px;height:8px;border-radius:50%}
+  .dot.g{background:var(--gold)} .dot.tl{background:var(--teal)}
+  .axis ul{list-style:none;font-size:12.5px;color:var(--muted);line-height:1.95}
+  .axis li::before{content:"・";color:var(--gold);margin-right:2px}
+  .howto{background:var(--panel-2);border:1px dashed var(--line);border-radius:12px;
+    padding:14px 16px;font-size:12.5px;color:var(--muted);line-height:1.9;margin-bottom:26px}
+  .howto b{color:var(--gold-soft);font-weight:700}
+  .btn{width:100%;border:none;cursor:pointer;font-family:"Zen Kaku Gothic New",sans-serif;
+    font-weight:700;font-size:16px;color:#1a1206;
+    background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+    padding:17px 20px;border-radius:14px;letter-spacing:.04em;
+    transition:transform .15s ease, box-shadow .25s ease;box-shadow:0 14px 30px -12px rgba(216,166,87,.6);
+    min-height:54px;touch-action:manipulation;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 20px 38px -12px rgba(216,166,87,.7)}
+  .btn:active{transform:translateY(0)}
+  .btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line);box-shadow:none;font-weight:500;}
+  .btn.ghost:hover{color:var(--text);border-color:var(--gold);transform:none}
+  .note{font-size:11.5px;color:var(--muted);line-height:1.8;margin-top:18px;opacity:.85}
+  .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+  .cat{font-size:11px;letter-spacing:.22em;color:var(--gold);font-weight:700;text-transform:uppercase}
+  .count{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .bar{height:5px;border-radius:99px;background:var(--panel-2);overflow:hidden;margin-bottom:30px}
+  .bar > i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .4s cubic-bezier(.3,.8,.3,1)}
+  .qdim{font-size:12px;color:var(--muted);letter-spacing:.05em;margin-bottom:10px}
+  .qtext{font-family:"Shippori Mincho",serif;font-weight:700;font-size:clamp(18px,4.6vw,23px);line-height:1.55;margin-bottom:26px}
+  .opts{display:flex;flex-direction:column;gap:11px}
+  .opt{text-align:left;cursor:pointer;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:13px;padding:15px 16px;color:var(--text);font-size:14.5px;font-family:inherit;
+    line-height:1.5;display:flex;align-items:center;gap:13px;transition:border-color .18s, background .18s, transform .12s;
+    min-height:54px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+  .opt:hover{border-color:var(--gold);background:#1f2840;transform:translateX(3px)}
+  .opt:active{background:#1f2840}
+  .opt .mk{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);
+    display:grid;place-items:center;font-size:11px;color:var(--muted);font-weight:700;transition:.18s;}
+  .opt:hover .mk{border-color:var(--gold);color:var(--gold)}
+  .backrow{margin-top:22px}
+  .back{background:none;border:none;color:var(--muted);font-family:inherit;font-size:13px;cursor:pointer;padding:8px 0;min-height:40px}
+  .back:hover{color:var(--text)} .back[disabled]{opacity:.3;cursor:default}
+  .result-head{text-align:center;margin-bottom:8px}
+  .stars{font-size:22px;letter-spacing:6px;margin-bottom:8px}
+  .star-on{color:var(--gold)} .star-off{color:#2a3550}
+  .score-num{font-family:"Shippori Mincho",serif;font-weight:800;font-size:60px;line-height:1;
+    color:var(--gold-soft);font-variant-numeric:tabular-nums;}
+  .score-num span{font-size:22px;color:var(--muted)}
+  .type-name{font-family:"Shippori Mincho",serif;font-weight:800;font-size:26px;margin:12px 0 6px}
+  .type-sub{color:var(--muted);font-size:12px;letter-spacing:.18em}
+  .type-desc{color:var(--muted);font-size:14px;line-height:1.95;margin:18px 0 26px;text-align:center}
+  .sec-title{font-family:"Shippori Mincho",serif;font-weight:700;font-size:15px;color:var(--gold-soft);
+    margin:30px 0 14px;display:flex;align-items:center;gap:9px}
+  .sec-title::before{content:"";width:14px;height:2px;background:var(--gold)}
+  .radar-wrap{display:flex;justify-content:center;margin:6px 0 6px}
+  .radar-wrap svg{max-width:100%;height:auto}
+  .dual{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
+  .metric{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .metric .lab{font-size:11.5px;color:var(--muted);letter-spacing:.1em;margin-bottom:6px}
+  .metric .val{font-family:"Shippori Mincho",serif;font-weight:700;font-size:22px}
+  .metric .mini{height:5px;border-radius:99px;background:#0f1626;margin-top:10px;overflow:hidden}
+  .metric .mini > i{display:block;height:100%;border-radius:99px;width:0}
+  .bars{display:flex;flex-direction:column;gap:14px}
+  .brow .bl{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px}
+  .brow .bl b{font-weight:500;color:var(--text)}
+  .brow .bl span{color:var(--gold-soft);font-variant-numeric:tabular-nums;font-weight:700}
+  .track{height:8px;border-radius:99px;background:#0f1626;overflow:hidden}
+  .track > i{display:block;height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .8s cubic-bezier(.3,.9,.3,1)}
+  /* portfolio */
+  .pf-bar{display:flex;height:30px;border-radius:9px;overflow:hidden;margin-bottom:14px;border:1px solid var(--line)}
+  .pf-bar > div{height:100%;transition:width .9s cubic-bezier(.3,.9,.3,1)}
+  .pf-legend{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+  @media(max-width:520px){.pf-legend{grid-template-columns:1fr}}
+  .pf-item{display:flex;align-items:center;gap:9px;font-size:13px}
+  .pf-item .sw{width:11px;height:11px;border-radius:3px;flex:0 0 auto}
+  .pf-item .nm{color:var(--text)} .pf-item .pc{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums}
+  .pf-note{font-size:12px;color:var(--muted);line-height:1.85;margin-top:14px}
+  .disc{background:rgba(217,101,122,.07);border:1px solid rgba(217,101,122,.28);border-radius:12px;
+    padding:14px 15px;font-size:12px;color:#e7b9c2;line-height:1.85;margin:26px 0 20px;}
+  .disc b{color:var(--rose)}
+  .hidden{display:none}
+  .fade{animation:fade .45s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+  .footer-tag{text-align:center;color:var(--muted);font-size:10.5px;letter-spacing:.2em;margin-top:18px;opacity:.6}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="card">
+    <div class="pad">
+      <!-- INTRO -->
+      <section id="intro" class="fade">
+        <div class="eyebrow">Deep Psychology Analysis</div>
+        <h1>深層心理から読み解く<br><span class="accent">リスク許容度</span>診断</h1>
+        <p class="lead">投資の知識を問う質問はほとんどありません。一見投資と関係なさそうな“生活習慣”や“ふだんの選び方”から、あなたが無意識にリスクとどう向き合うかを読み解きます。ライフスタイルとリスク許容度の相関に着目した設計です。</p>
+        <div class="axes">
+          <div class="axis">
+            <div class="t"><span class="dot g"></span>深層心理のサイン</div>
+            <ul><li>リスク姿勢・ストレス反応</li><li>意思決定パターン</li><li>お金との距離感</li><li>変化への構え</li></ul>
+          </div>
+          <div class="axis">
+            <div class="t"><span class="dot tl"></span>生活習慣のサイン</div>
+            <ul><li>スポーツ・運動</li><li>防災・備え（逆相関）</li><li>趣味・行動の傾向</li><li>ライフステージ</li></ul>
+          </div>
+        </div>
+        <div class="howto">
+          <b>全24問・約4分。</b>直感で選んでOKです。回答をもとに5段階でリスク許容度を判定し、参考となるポートフォリオの配分イメージも表示します。
+        </div>
+        <button class="btn" onclick="start()">診断をはじめる</button>
+        <p class="note">※ 本診断は自己理解を目的とした教育的ツールで、特定の企業・サービス・調査機関とは無関係の独自設計です。結果は投資助言・推奨ではありません。実際の投資判断はご自身の責任で、必要に応じて有資格の専門家にご相談ください。</p>
+      </section>
+      <!-- QUIZ -->
+      <section id="quiz" class="hidden">
+        <div class="top">
+          <span class="cat" id="qcat">LIFESTYLE</span>
+          <span class="count"><b id="qnow">1</b> / <span id="qtot">24</span></span>
+        </div>
+        <div class="bar"><i id="qbar" style="width:4%"></i></div>
+        <div class="qdim" id="qdim"></div>
+        <div class="qtext" id="qtext"></div>
+        <div class="opts" id="qopts"></div>
+        <div class="backrow"><button class="back" id="qback" onclick="back()">← 前の質問へ</button></div>
+      </section>
+      <!-- RESULT -->
+      <section id="result" class="hidden">
+        <div class="eyebrow">Your Profile</div>
+        <div class="result-head">
+          <div class="stars" id="rstars"></div>
+          <div class="score-num"><span id="rscore">0</span><span>/100</span></div>
+          <div class="type-name" id="rtype">—</div>
+          <div class="type-sub" id="rsub">RISK TOLERANCE</div>
+        </div>
+        <p class="type-desc" id="rdesc"></p>
+        <div class="radar-wrap"><div id="radar"></div></div>
+        <div class="dual">
+          <div class="metric">
+            <div class="lab">深層心理スコア</div>
+            <div class="val"><span id="mpsy">0</span></div>
+            <div class="mini"><i id="bpsy" style="background:linear-gradient(90deg,#e8c489,#d8a657)"></i></div>
+          </div>
+          <div class="metric">
+            <div class="lab">生活習慣スコア</div>
+            <div class="val"><span id="mlife">0</span></div>
+            <div class="mini"><i id="blife" style="background:linear-gradient(90deg,#46b6a8,#2f8f84)"></i></div>
+          </div>
+        </div>
+        <div class="sec-title">5つの傾向</div>
+        <div class="bars" id="rbars"></div>
+        <div class="sec-title">参考ポートフォリオ（配分イメージ）</div>
+        <div class="pf-bar" id="pfbar"></div>
+        <div class="pf-legend" id="pflegend"></div>
+        <p class="pf-note" id="pfnote"></p>
+        <div class="disc">
+          <b>ご注意 — </b>上記の配分はタイプごとの一般的な“例示”で、あなた個人に最適化された提案ではありません。本診断は傾向の可視化であり、投資助言・特定商品の推奨ではありません。リスク許容度は収入・資産・年齢・運用目標などで変わります。運用判断はご自身で十分検討のうえ、必要に応じて有資格の専門家にご相談ください。
+        </div>
+        <button class="btn" onclick="restart()">もう一度診断する</button>
+        <button class="btn ghost" style="margin-top:10px" onclick="copyResult()" id="copybtn">結果サマリーをコピー</button>
+        <div class="footer-tag">DEEP PSYCHOLOGY × LIFESTYLE — RISK TOLERANCE</div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+// score: 高いほどリスク許容度が高い(0〜4) / radar:5軸 / group: psy or life
+// 軸 A=挑戦志向 B=ストレス耐性 C=決断スピード D=投資・お金への関与 E=生活の身軽さ(備え/ライフ)
+const QUESTIONS = [
+  {cat:"LIFESTYLE",radar:"挑戦志向",group:"life",dim:"スポーツ習慣",
+   q:"普段、行っているスポーツや運動はありますか？",
+   opts:[{t:"ほとんど運動はしない",s:1},{t:"散歩やストレッチなど軽いもの",s:2},{t:"定期的に運動している",s:3},{t:"登山・スキー・マラソンなど活動的",s:4}]},
+  {cat:"LIFESTYLE",radar:"生活の身軽さ",group:"life",dim:"防災準備",
+   q:"災害に備え、自宅に防災キットや保存食を準備していますか？",
+   opts:[{t:"備蓄・グッズ・避難計画まで万全",s:0},{t:"ある程度は準備している",s:2},{t:"最低限のものだけ",s:3},{t:"特に準備していない",s:4}]},
+  {cat:"LIFESTYLE",radar:"挑戦志向",group:"life",dim:"休日の過ごし方",
+   q:"休日の過ごし方として近いのは？",
+   opts:[{t:"自宅でのんびり計画的に過ごす",s:1},{t:"行きつけの場所でゆっくり",s:2},{t:"新しい場所へ出かけたい",s:3},{t:"刺激や冒険を求めて行動する",s:4}]},
+  {cat:"DECISION",radar:"決断スピード",group:"life",dim:"旅行の準備",
+   q:"旅行の計画スタイルは？",
+   opts:[{t:"分刻みでしっかり計画する",s:1},{t:"大枠だけ決めておく",s:2},{t:"宿だけ取って現地で決める",s:3},{t:"行き当たりばったりが楽しい",s:4}]},
+  {cat:"LIFESTYLE",radar:"挑戦志向",group:"life",dim:"食の選び方",
+   q:"初めての店でメニューを選ぶとき、あなたは？",
+   opts:[{t:"失敗したくないので定番を選ぶ",s:1},{t:"無難なものを選びがち",s:2},{t:"気になれば未知のものに挑戦",s:3},{t:"いつも一番変わったものを頼む",s:4}]},
+  {cat:"LIFESTYLE",radar:"生活の身軽さ",group:"life",dim:"保険",
+   q:"保険の加入状況に近いのは？",
+   opts:[{t:"あらゆるリスクに手厚く加入",s:0},{t:"主要なものはしっかり加入",s:2},{t:"必要最低限だけ",s:3},{t:"ほとんど入っていない",s:4}]},
+  {cat:"STRESS",radar:"ストレス耐性",group:"psy",dim:"変化への反応",
+   q:"予定が急に変更になったとき、あなたの気持ちは？",
+   opts:[{t:"強く動揺し、不安になる",s:0},{t:"少し戸惑い、立て直すのに時間がかかる",s:1},{t:"わりとすぐ気持ちを切り替えられる",s:3},{t:"むしろ新しい展開を楽しめる",s:4}]},
+  {cat:"DECISION",radar:"決断スピード",group:"life",dim:"時間の使い方",
+   q:"待ち合わせには、どれくらい前に着きますか？",
+   opts:[{t:"かなり早めに着いて待つ",s:1},{t:"少し余裕をもって着く",s:2},{t:"だいたい時間ぴったり",s:3},{t:"ギリギリ、たまに遅れる",s:4}]},
+  {cat:"LIFESTYLE",radar:"挑戦志向",group:"life",dim:"新しい味への挑戦",
+   q:"激辛料理や見たことのない料理を前にしたら？",
+   opts:[{t:"無理せず食べ慣れたものにする",s:1},{t:"少しだけ様子を見て試す",s:2},{t:"せっかくなので挑戦する",s:3},{t:"未知の味こそ進んで試す",s:4}]},
+  {cat:"LIFESTYLE",radar:"生活の身軽さ",group:"life",dim:"整理整頓",
+   q:"部屋やデスクの状態に近いのは？",
+   opts:[{t:"常にきっちり整理されている",s:1},{t:"おおむね片付いている",s:2},{t:"必要な物が出ていることが多い",s:3},{t:"散らかっていても気にしない",s:4}]},
+  {cat:"PSYCHOLOGY",radar:"挑戦志向",group:"psy",dim:"対人傾向",
+   q:"初対面の人が多い集まりでは？",
+   opts:[{t:"緊張して隅にいることが多い",s:1},{t:"知っている人とだけ話す",s:2},{t:"気になる人に自分から話しかける",s:3},{t:"知らない人と話すのが楽しい",s:4}]},
+  {cat:"MONEY",radar:"投資関与度",group:"psy",dim:"お金の使い方",
+   q:"お金の使い方として近いのは？",
+   opts:[{t:"とにかく貯蓄を最優先する",s:0},{t:"堅実に貯めつつ少し使う",s:2},{t:"使うときは思い切って使う",s:3},{t:"価値を感じれば積極的に投じる",s:4}]},
+  {cat:"PSYCHOLOGY",radar:"挑戦志向",group:"psy",dim:"くじ運への姿勢",
+   q:"くじ引きで選ぶなら？",
+   opts:[{t:"当たりやすい堅実な小さい賞",s:1},{t:"そこそこの確率と賞金",s:2},{t:"少し確率は低くても大きい賞",s:3},{t:"一発逆転の超大型賞を狙う",s:4}]},
+  {cat:"STRESS",radar:"ストレス耐性",group:"psy",dim:"プレッシャー",
+   q:"大事な発表や試験の前夜、あなたは？",
+   opts:[{t:"緊張で眠れないことが多い",s:0},{t:"そわそわして落ち着かない",s:1},{t:"いつも通り過ごせる",s:3},{t:"本番にむしろ燃えるタイプ",s:4}]},
+  {cat:"DECISION",radar:"決断スピード",group:"psy",dim:"買い物の判断",
+   q:"少し高い買い物をするとき、あなたは？",
+   opts:[{t:"レビューや比較を徹底的に調べる",s:1},{t:"ある程度調べて納得してから買う",s:2},{t:"要点を見たら比較的すぐ決める",s:3},{t:"ピンときたら即決する",s:4}]},
+  {cat:"LIFESTYLE",radar:"生活の身軽さ",group:"life",dim:"健康管理",
+   q:"健康診断や人間ドックは？",
+   opts:[{t:"毎年必ず受け、結果も細かく管理",s:1},{t:"基本的に毎年受けている",s:2},{t:"気が向いたときだけ",s:3},{t:"ほとんど受けていない",s:4}]},
+  {cat:"RISK ATTITUDE",radar:"ストレス耐性",group:"psy",dim:"損失への反応",
+   q:"もし保有資産が短期間で30%下落したら？",
+   opts:[{t:"すぐ売って損失を確定させる",s:0},{t:"不安で一部を売り様子を見る",s:1},{t:"何もせず保有を続ける",s:2},{t:"割安と捉え買い増しを検討する",s:4}]},
+  {cat:"RISK ATTITUDE",radar:"挑戦志向",group:"psy",dim:"リスクとリターン",
+   q:"次のうち、心が動くのは？",
+   opts:[{t:"絶対に減らない代わりに増えにくい",s:0},{t:"少しの変動で少しのリターン",s:1},{t:"そこそこ変動しそれなりのリターン",s:3},{t:"大きく変動するが大きなリターン",s:4}]},
+  {cat:"STRESS",radar:"ストレス耐性",group:"psy",dim:"想定外への耐性",
+   q:"想定外の損失が出たときの心理状態は？",
+   opts:[{t:"強い不安で頭から離れない",s:0},{t:"気になって何度も確認する",s:1},{t:"気にはなるが冷静を保てる",s:3},{t:"ほぼ動じず計画通り動ける",s:4}]},
+  {cat:"MARKET",radar:"投資関与度",group:"psy",dim:"市場への関心",
+   q:"経済・市場のニュースをチェックする頻度は？",
+   opts:[{t:"ほとんど見ない",s:0},{t:"気が向いたとき時々",s:2},{t:"ほぼ毎日見ている",s:3},{t:"1日に何度も確認している",s:4}]},
+  {cat:"DECISION",radar:"決断スピード",group:"psy",dim:"新しいものへの姿勢",
+   q:"新しく話題のサービスや商品が出たら？",
+   opts:[{t:"実績が固まるまで様子見",s:0},{t:"評判を確かめてから試す",s:2},{t:"気になれば早めに試す",s:3},{t:"いち早く飛びつく方だ",s:4}]},
+  {cat:"MONEY",radar:"投資関与度",group:"psy",dim:"余剰資金の扱い",
+   q:"まとまった余剰資金ができたら？",
+   opts:[{t:"すべて預貯金など安全資産へ",s:0},{t:"大半は安全資産、一部を投資",s:2},{t:"半分以上を投資に回す",s:3},{t:"積極的に投資・運用していく",s:4}]},
+  {cat:"LIFESTYLE",radar:"生活の身軽さ",group:"life",dim:"ライフステージ（年代）",
+   q:"あなたの年代は？",
+   opts:[{t:"60代以上",s:1},{t:"50代",s:2},{t:"30〜40代",s:3},{t:"20代以下",s:4}]},
+  {cat:"LIFESTYLE",radar:"生活の身軽さ",group:"life",dim:"ライフステージ（家族）",
+   q:"家計の状況に近いのは？",
+   opts:[{t:"扶養家族が多く守るものが大きい",s:1},{t:"配偶者・子どもがいる",s:2},{t:"パートナーはいるが扶養なし",s:3},{t:"独身・扶養なしで身軽",s:4}]},
+];
+const RADAR_AXES = ["挑戦志向","ストレス耐性","決断スピード","投資関与度","生活の身軽さ"];
+const PF_COLORS = {cash:"#46b6a8", bond:"#6f86c4", jp:"#d8a657", dev:"#e08a64", alt:"#d9657a"};
+const PF_LABELS = {cash:"現金・預金", bond:"債券", jp:"国内株式", dev:"先進国株式", alt:"新興国株・オルタナ"};
+const TYPES = [
+  {min:0,name:"安定重視型",sub:"CONSERVATIVE",stars:1,
+   desc:"資産を“減らさないこと”を最優先するタイプ。生活面でも計画性・備えを重んじ、変化より安定を選ぶ傾向が見られます。守りの強さが持ち味です。",
+   pf:{cash:50,bond:35,jp:8,dev:7,alt:0}},
+  {min:21,name:"慎重型",sub:"CAUTIOUS",stars:2,
+   desc:"基本は守りつつ、限られた範囲で前進を試すタイプ。納得してから動く慎重さがあり、急な変化には敏感。少額から経験を積むスタイルが合いそうです。",
+   pf:{cash:30,bond:40,jp:14,dev:14,alt:2}},
+  {min:41,name:"バランス型",sub:"BALANCED",stars:3,
+   desc:"守りと攻めの均衡が取れたタイプ。変動をある程度受け入れつつ冷静さも保てます。心理・生活の両面が中庸で、分散を意識した運用と相性が良い土台を持ちます。",
+   pf:{cash:15,bond:35,jp:22,dev:23,alt:5}},
+  {min:61,name:"積極型",sub:"ASSERTIVE",stars:4,
+   desc:"リターンのための変動を前向きに受け入れるタイプ。行動的で意思決定も速め。リスクと向き合う体力がある一方、過信には注意したいところです。",
+   pf:{cash:10,bond:20,jp:28,dev:34,alt:8}},
+  {min:81,name:"挑戦型",sub:"AGGRESSIVE",stars:5,
+   desc:"高い変動も成長機会と捉える、最もリスク許容度の高いタイプ。新しいものへの関心が旺盛で生活全般がアクティブ。大胆さが強みである反面、リスク管理の仕組み化が鍵です。",
+   pf:{cash:5,bond:10,jp:28,dev:42,alt:15}},
+];
+let idx=0;
+const answers=new Array(QUESTIONS.length).fill(null);
+const $=id=>document.getElementById(id);
+function start(){$("intro").classList.add("hidden");$("quiz").classList.remove("hidden");$("qtot").textContent=QUESTIONS.length;idx=0;render();window.scrollTo(0,0);}
+function render(){
+  const Q=QUESTIONS[idx];
+  $("qcat").textContent=Q.cat;
+  $("qnow").textContent=idx+1;
+  $("qbar").style.width=((idx+1)/QUESTIONS.length*100)+"%";
+  $("qdim").textContent="分析項目："+Q.dim;
+  $("qtext").textContent=Q.q;
+  $("qback").disabled=idx===0;
+  const wrap=$("qopts");wrap.innerHTML="";
+  wrap.classList.remove("fade");void wrap.offsetWidth;wrap.classList.add("fade");
+  const L=["A","B","C","D"];
+  Q.opts.forEach((o,i)=>{
+    const b=document.createElement("button");b.className="opt";
+    b.innerHTML='<span class="mk">'+L[i]+'</span><span>'+o.t+'</span>';
+    b.onclick=()=>choose(i);
+    if(answers[idx]===i){b.querySelector(".mk").style.borderColor="var(--gold)";b.querySelector(".mk").style.color="var(--gold)";}
+    wrap.appendChild(b);
+  });
+}
+function choose(i){answers[idx]=i;if(idx<QUESTIONS.length-1){idx++;render();}else finish();}
+function back(){if(idx>0){idx--;render();}}
+function finish(){
+  let total=0,maxT=0,psy=0,psyM=0,life=0,lifeM=0;
+  const dS={},dM={};RADAR_AXES.forEach(a=>{dS[a]=0;dM[a]=0;});
+  QUESTIONS.forEach((Q,i)=>{
+    const s=Q.opts[answers[i]].s;total+=s;maxT+=4;
+    dS[Q.radar]+=s;dM[Q.radar]+=4;
+    if(Q.group==="psy"){psy+=s;psyM+=4;}else{life+=s;lifeM+=4;}
+  });
+  const score=Math.round(total/maxT*100);
+  const psyScore=Math.round(psy/psyM*100);
+  const lifeScore=Math.round(life/lifeM*100);
+  const dimPct={};RADAR_AXES.forEach(a=>dimPct[a]=Math.round(dS[a]/dM[a]*100));
+  showResult(score,psyScore,lifeScore,dimPct);
+}
+function pickType(score){let t=TYPES[0];for(const x of TYPES){if(score>=x.min)t=x;}return t;}
+let LAST_SUMMARY="";
+function showResult(score,psyScore,lifeScore,dimPct){
+  $("quiz").classList.add("hidden");
+  const r=$("result");r.classList.remove("hidden");r.classList.add("fade");window.scrollTo(0,0);
+  const t=pickType(score);
+  let st="";for(let i=0;i<5;i++)st+='<span class="'+(i<t.stars?"star-on":"star-off")+'">★</span>';
+  $("rstars").innerHTML=st;
+  $("rtype").textContent=t.name;
+  $("rsub").textContent=t.sub+" — RISK TOLERANCE";
+  $("rdesc").textContent=t.desc;
+  countUp($("rscore"),score,900);
+  $("mpsy").textContent=psyScore;$("mlife").textContent=lifeScore;
+  setTimeout(()=>{$("bpsy").style.width=psyScore+"%";$("blife").style.width=lifeScore+"%";},120);
+  $("radar").innerHTML=buildRadar(dimPct);
+  const bars=$("rbars");bars.innerHTML="";
+  RADAR_AXES.forEach((a,k)=>{
+    const v=dimPct[a];const row=document.createElement("div");row.className="brow";
+    row.innerHTML='<div class="bl"><b>'+a+'</b><span>'+v+'</span></div><div class="track"><i></i></div>';
+    bars.appendChild(row);
+    setTimeout(()=>{row.querySelector("i").style.width=v+"%";},200+k*90);
+  });
+  // portfolio
+  const pf=t.pf;const order=["cash","bond","jp","dev","alt"];
+  const pfbar=$("pfbar");pfbar.innerHTML="";
+  order.forEach(k=>{if(pf[k]>0){const d=document.createElement("div");d.style.background=PF_COLORS[k];d.style.width="0%";d.title=PF_LABELS[k]+" "+pf[k]+"%";pfbar.appendChild(d);}});
+  setTimeout(()=>{let n=0;order.forEach(k=>{if(pf[k]>0){pfbar.children[n].style.width=pf[k]+"%";n++;}});},250);
+  const leg=$("pflegend");leg.innerHTML="";
+  order.forEach(k=>{if(pf[k]>0){const it=document.createElement("div");it.className="pf-item";
+    it.innerHTML='<span class="sw" style="background:'+PF_COLORS[k]+'"></span><span class="nm">'+PF_LABELS[k]+'</span><span class="pc">'+pf[k]+'%</span>';leg.appendChild(it);}});
+  $("pfnote").textContent="株式比率は約"+(pf.jp+pf.dev+pf.alt)+"%。リスク許容度が高いほど株式など値動きの大きい資産の比率が高まります（あくまで一般的な配分イメージです）。";
+  LAST_SUMMARY="【深層心理リスク許容度診断】\n総合スコア："+score+"/100 — "+t.name+"（"+t.sub+"）★"+t.stars+"\n深層心理スコア："+psyScore+" / 生活習慣スコア："+lifeScore+"\n挑戦志向 "+dimPct["挑戦志向"]+" / ストレス耐性 "+dimPct["ストレス耐性"]+" / 決断スピード "+dimPct["決断スピード"]+" / 投資関与度 "+dimPct["投資関与度"]+" / 生活の身軽さ "+dimPct["生活の身軽さ"]+"\n参考配分：現金"+pf.cash+"% 債券"+pf.bond+"% 国内株"+pf.jp+"% 先進国株"+pf.dev+"% 新興国/オルタナ"+pf.alt+"%\n※自己理解のための参考結果であり投資助言ではありません。";
+}
+function countUp(el,target,dur){const s=performance.now();function step(n){const p=Math.min((n-s)/dur,1);const e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e);if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+function buildRadar(dimPct){
+  const size=300,cx=size/2,cy=size/2,R=98,n=RADAR_AXES.length;
+  const ang=i=>(-Math.PI/2)+i*(2*Math.PI/n);
+  const pt=(i,rad)=>[cx+Math.cos(ang(i))*rad,cy+Math.sin(ang(i))*rad];
+  let grid="";[0.25,0.5,0.75,1].forEach(f=>{let p="";for(let i=0;i<n;i++){const[x,y]=pt(i,R*f);p+=x.toFixed(1)+","+y.toFixed(1)+" ";}grid+='<polygon points="'+p.trim()+'" fill="none" stroke="#2a3550" stroke-width="1"/>';});
+  let sp="";for(let i=0;i<n;i++){const[x,y]=pt(i,R);sp+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="#2a3550" stroke-width="1"/>';}
+  let dp="";for(let i=0;i<n;i++){const v=dimPct[RADAR_AXES[i]]/100;const[x,y]=pt(i,R*v);dp+=x.toFixed(1)+","+y.toFixed(1)+" ";}
+  let dots="";for(let i=0;i<n;i++){const v=dimPct[RADAR_AXES[i]]/100;const[x,y]=pt(i,R*v);dots+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.5" fill="#e8c489"/>';}
+  let lb="";for(let i=0;i<n;i++){const[x,y]=pt(i,R+24);let a="middle";if(x<cx-8)a="end";else if(x>cx+8)a="start";const dy=y<cy-10?-2:y>cy+10?12:4;lb+='<text x="'+x.toFixed(1)+'" y="'+(y+dy).toFixed(1)+'" fill="#8b97b3" font-size="11" font-family="Zen Kaku Gothic New,sans-serif" text-anchor="'+a+'">'+RADAR_AXES[i]+'</text>';}
+  return '<svg viewBox="0 0 '+size+' '+size+'" width="300" height="300" role="img" aria-label="リスク許容度レーダーチャート"><defs><radialGradient id="rg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="rgba(216,166,87,.45)"/><stop offset="100%" stop-color="rgba(70,182,168,.25)"/></radialGradient></defs>'+grid+sp+'<polygon points="'+dp.trim()+'" fill="url(#rg)" stroke="#d8a657" stroke-width="2" stroke-linejoin="round"/>'+dots+lb+'</svg>';
+}
+function restart(){answers.fill(null);idx=0;$("result").classList.add("hidden");$("intro").classList.remove("hidden");$("intro").classList.add("fade");window.scrollTo(0,0);}
+function copyResult(){const done=()=>{const b=$("copybtn");const o=b.textContent;b.textContent="コピーしました ✓";setTimeout(()=>b.textContent=o,1600);};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(LAST_SUMMARY).then(done).catch(()=>fb(done));}else fb(done);}
+function fb(done){const ta=document.createElement("textarea");ta.value=LAST_SUMMARY;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(ta);done();}
+</script>
+</body>
+</html>
