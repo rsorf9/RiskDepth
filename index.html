@@ -199,8 +199,9 @@
         <div class="howto">
           <b>全24問・約4分。</b>直感で選んでOKです。回答をもとに5段階でリスク許容度を判定し、参考となるポートフォリオの配分イメージも表示します。
         </div>
-        <button class="btn" onclick="start()">診断をはじめる</button>
-        <p class="note">※ 本診断は自己理解を目的とした教育的ツールで、特定の企業・サービス・調査機関とは無関係の独自設計です。結果は投資助言・推奨ではありません。実際の投資判断はご自身の責任で、必要に応じて有資格の専門家にご相談ください。</p>
+        <button class="btn" onclick="start()">リスク許容度診断をはじめる（24問）</button>
+        <button class="btn ghost" style="margin-top:10px" onclick="startWB()">心理的充実度を自己診断する（10問）</button>
+        <p class="note">※ 本診断は自己理解を目的とした教育的ツールで、特定の企業・サービス・調査機関とは無関係の独自設計です。結果は投資助言・医療診断・推奨ではありません。実際の投資判断はご自身の責任で、心身の不調が続く場合は有資格の専門家にご相談ください。</p>
       </section>
       <!-- QUIZ -->
       <section id="quiz" class="hidden">
@@ -249,6 +250,39 @@
         <button class="btn" onclick="restart()">もう一度診断する</button>
         <button class="btn ghost" style="margin-top:10px" onclick="copyResult()" id="copybtn">結果サマリーをコピー</button>
         <div class="footer-tag">DEEP PSYCHOLOGY × LIFESTYLE — RISK TOLERANCE</div>
+      </section>
+      <!-- WELLBEING QUIZ -->
+      <section id="wbquiz" class="hidden">
+        <div class="top">
+          <span class="cat" id="wbcat">WELL-BEING</span>
+          <span class="count"><b id="wbnow">1</b> / <span id="wbtot">10</span></span>
+        </div>
+        <div class="bar"><i id="wbbar" style="width:10%"></i></div>
+        <div class="qdim" id="wbdim"></div>
+        <div class="qtext" id="wbtext"></div>
+        <div class="opts" id="wbopts"></div>
+        <div class="backrow"><button class="back" id="wbback" onclick="wbBack()">← 前の質問へ</button></div>
+      </section>
+      <!-- WELLBEING RESULT -->
+      <section id="wbresult" class="hidden">
+        <div class="eyebrow">Well-being Check</div>
+        <div class="result-head">
+          <div class="score-num"><span id="wbscore">0</span><span>/100</span></div>
+          <div class="type-name" id="wbtype">—</div>
+          <div class="type-sub">PSYCHOLOGICAL WELL-BEING</div>
+        </div>
+        <p class="type-desc" id="wbdesc"></p>
+        <div class="radar-wrap"><div id="wbradar"></div></div>
+        <div class="sec-title">4つの軸</div>
+        <div class="bars" id="wbbars"></div>
+        <div class="sec-title" id="wb-adv-title">いま意識するとよいこと</div>
+        <p class="pf-note" id="wbadvice"></p>
+        <div class="disc">
+          <b>ご注意 — </b>本セルフチェックは自己理解のための目安で、医療的な診断ではありません。気分の落ち込み・不安・不眠などが2週間以上続く、または日常生活に支障がある場合は、ひとりで抱え込まず、医療機関や専門の相談窓口にご相談ください。
+        </div>
+        <button class="btn" onclick="startWB()">もう一度チェックする</button>
+        <button class="btn ghost" style="margin-top:10px" onclick="goHome()">トップに戻る</button>
+        <div class="footer-tag">MEANING · ENGAGEMENT · CONNECTION · RESILIENCE</div>
       </section>
     </div>
   </div>
@@ -435,6 +469,92 @@ function buildRadar(dimPct){
 function restart(){answers.fill(null);idx=0;$("result").classList.add("hidden");$("intro").classList.remove("hidden");$("intro").classList.add("fade");window.scrollTo(0,0);}
 function copyResult(){const done=()=>{const b=$("copybtn");const o=b.textContent;b.textContent="コピーしました ✓";setTimeout(()=>b.textContent=o,1600);};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(LAST_SUMMARY).then(done).catch(()=>fb(done));}else fb(done);}
 function fb(done){const ta=document.createElement("textarea");ta.value=LAST_SUMMARY;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(ta);done();}
+
+/* ===== 心理的充実度（ウェルビーイング）セルフチェック ===== */
+// 4軸：意味 / 没頭 / つながり / 回復（感情の安定）
+const WB_AXES = ["意味","没頭","つながり","回復"];
+const WB_OPTS = [
+  {t:"ほとんどない",s:0},{t:"ときどきある",s:1},{t:"よくある",s:2},{t:"いつもそう感じる",s:3}
+];
+const WB_Q = [
+  {axis:"回復",dim:"朝の心の状態", q:"朝起きたとき、今日やることに少しでも前向きさを感じますか？"},
+  {axis:"没頭",dim:"集中・フロー",   q:"何かに取り組んでいるとき、時間が短く感じることがありますか？"},
+  {axis:"意味",dim:"目標の意味づけ", q:"自分の役割や目標に、自分なりの意味を感じますか？"},
+  {axis:"つながり",dim:"関係の温かさ", q:"人と会ったあと、消耗よりも温かさや安心感が残りますか？"},
+  {axis:"回復",dim:"立ち直る力",     q:"失敗しても、立ち直って次に向かえると感じますか？"},
+  {axis:"意味",dim:"自分らしさ",     q:"「今の生活は自分らしい」と感じることがありますか？"},
+  {axis:"没頭",dim:"夢中になれる活動",q:"時間を忘れて夢中になれる活動が、生活の中にありますか？"},
+  {axis:"つながり",dim:"安心できる関係",q:"安心して本音で関われる人や居場所がありますか？"},
+  {axis:"回復",dim:"感情の安定",     q:"不安や落ち込みがあっても、回復して日常に戻れますか？"},
+  {axis:"意味",dim:"行動への納得",   q:"自分の行動に、「何のためにやっているか」という納得感がありますか？"},
+];
+const WB_TYPES = [
+  {min:0,  name:"いまは要ケア",   desc:"充実を感じる手がかりが少なめのようです。無理に頑張るより、休息と安心できる人とのつながりを最優先に。小さな「できた」を一つ取り戻すことから始めましょう。"},
+  {min:40, name:"少しゆらいでいる",desc:"土台はありつつ、意味や回復の感覚が揺らいでいるかもしれません。負担を一つ手放し、夢中になれる時間や安心できる関係を意識的に増やすと整いやすくなります。"},
+  {min:65, name:"おおむね良好",   desc:"意味・没頭・つながり・回復がバランスよく機能しています。今うまくいっている習慣を言語化し、忙しい時期でも崩さない仕組みにしておくと安定します。"},
+  {min:85, name:"充実している",   desc:"4つの軸がよく満たされた、心理的に充実した状態です。手応えや成長を感じられている今の在り方を大切に。余力を、まわりとのつながりに分けていけるとさらに豊かになります。"},
+];
+const WB_ADVICE = {
+  "意味":"「何のために」を一行で書き出すと、行動と価値観のつながりが見えやすくなります。",
+  "没頭":"時間を忘れられる活動を週に一度、予定として確保してみましょう。",
+  "つながり":"安心して話せる人に、近況を一つ共有する機会をつくってみましょう。",
+  "回復":"睡眠・休息を整え、落ち込んだときの「戻り方（散歩・人に話す等）」を一つ決めておくと回復が早まります。"
+};
+let wbIdx=0;
+const wbAns=new Array(WB_Q.length).fill(null);
+function hideAll(){["intro","quiz","result","wbquiz","wbresult"].forEach(id=>$(id).classList.add("hidden"));}
+function goHome(){hideAll();$("intro").classList.remove("hidden");$("intro").classList.add("fade");window.scrollTo(0,0);}
+function startWB(){hideAll();$("wbquiz").classList.remove("hidden");$("wbtot").textContent=WB_Q.length;wbAns.fill(null);wbIdx=0;wbRender();window.scrollTo(0,0);}
+function wbRender(){
+  const Q=WB_Q[wbIdx];
+  $("wbnow").textContent=wbIdx+1;
+  $("wbbar").style.width=((wbIdx+1)/WB_Q.length*100)+"%";
+  $("wbdim").textContent="チェック項目："+Q.dim+"（"+Q.axis+"）";
+  $("wbtext").textContent=Q.q;
+  $("wbback").disabled=wbIdx===0;
+  const wrap=$("wbopts");wrap.innerHTML="";
+  wrap.classList.remove("fade");void wrap.offsetWidth;wrap.classList.add("fade");
+  const L=["A","B","C","D"];
+  WB_OPTS.forEach((o,i)=>{
+    const b=document.createElement("button");b.className="opt";
+    b.innerHTML='<span class="mk">'+L[i]+'</span><span>'+o.t+'</span>';
+    b.onclick=()=>wbChoose(i);
+    if(wbAns[wbIdx]===i){b.querySelector(".mk").style.borderColor="var(--green)";b.querySelector(".mk").style.color="var(--green-deep)";}
+    wrap.appendChild(b);
+  });
+}
+function wbChoose(i){wbAns[wbIdx]=i;if(wbIdx<WB_Q.length-1){wbIdx++;wbRender();}else wbFinish();}
+function wbBack(){if(wbIdx>0){wbIdx--;wbRender();}}
+function wbPick(score){let t=WB_TYPES[0];for(const x of WB_TYPES){if(score>=x.min)t=x;}return t;}
+function wbFinish(){
+  let total=0,maxT=0;const aS={},aM={};WB_AXES.forEach(a=>{aS[a]=0;aM[a]=0;});
+  WB_Q.forEach((Q,i)=>{const s=WB_OPTS[wbAns[i]].s;total+=s;maxT+=3;aS[Q.axis]+=s;aM[Q.axis]+=3;});
+  const score=Math.round(total/maxT*100);
+  const axisPct={};WB_AXES.forEach(a=>axisPct[a]=Math.round(aS[a]/aM[a]*100));
+  hideAll();const r=$("wbresult");r.classList.remove("hidden");r.classList.add("fade");window.scrollTo(0,0);
+  const t=wbPick(score);
+  $("wbtype").textContent=t.name;$("wbdesc").textContent=t.desc;
+  countUp($("wbscore"),score,900);
+  $("wbradar").innerHTML=buildRadarG(axisPct,WB_AXES);
+  const bars=$("wbbars");bars.innerHTML="";
+  WB_AXES.forEach((a,k)=>{const v=axisPct[a];const row=document.createElement("div");row.className="brow";
+    row.innerHTML='<div class="bl"><b>'+a+'</b><span>'+v+'</span></div><div class="track"><i></i></div>';
+    bars.appendChild(row);setTimeout(()=>{row.querySelector("i").style.width=v+"%";},200+k*90);});
+  // 最も低い軸へのアドバイス
+  let low=WB_AXES[0];WB_AXES.forEach(a=>{if(axisPct[a]<axisPct[low])low=a;});
+  $("wbadvice").textContent="特に「"+low+"」が伸びしろです。"+WB_ADVICE[low];
+}
+function buildRadarG(pct,axes){
+  const size=300,cx=size/2,cy=size/2,R=98,n=axes.length;
+  const ang=i=>(-Math.PI/2)+i*(2*Math.PI/n);
+  const pt=(i,rad)=>[cx+Math.cos(ang(i))*rad,cy+Math.sin(ang(i))*rad];
+  let grid="";[0.25,0.5,0.75,1].forEach(f=>{let p="";for(let i=0;i<n;i++){const[x,y]=pt(i,R*f);p+=x.toFixed(1)+","+y.toFixed(1)+" ";}grid+='<polygon points="'+p.trim()+'" fill="none" stroke="#d6ded9" stroke-width="1"/>';});
+  let sp="";for(let i=0;i<n;i++){const[x,y]=pt(i,R);sp+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="#d6ded9" stroke-width="1"/>';}
+  let dp="";for(let i=0;i<n;i++){const v=pct[axes[i]]/100;const[x,y]=pt(i,R*v);dp+=x.toFixed(1)+","+y.toFixed(1)+" ";}
+  let dots="";for(let i=0;i<n;i++){const v=pct[axes[i]]/100;const[x,y]=pt(i,R*v);dots+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.5" fill="#0e7f56"/>';}
+  let lb="";for(let i=0;i<n;i++){const[x,y]=pt(i,R+24);let a="middle";if(x<cx-8)a="end";else if(x>cx+8)a="start";const dy=y<cy-10?-2:y>cy+10?12:4;lb+='<text x="'+x.toFixed(1)+'" y="'+(y+dy).toFixed(1)+'" fill="#5e6b64" font-size="11" font-family="Zen Kaku Gothic New,sans-serif" text-anchor="'+a+'">'+axes[i]+'</text>';}
+  return '<svg viewBox="0 0 '+size+' '+size+'" width="300" height="300" role="img" aria-label="ウェルビーイングレーダーチャート"><defs><radialGradient id="rgw" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="rgba(21,163,110,.40)"/><stop offset="100%" stop-color="rgba(63,191,140,.16)"/></radialGradient></defs>'+grid+sp+'<polygon points="'+dp.trim()+'" fill="url(#rgw)" stroke="#15a36e" stroke-width="2" stroke-linejoin="round"/>'+dots+lb+'</svg>';
+}
 </script>
 </body>
 </html>
