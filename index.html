@@ -9,10 +9,9 @@
 <meta name="description" content="投資の知識は不要。スポーツ・防災・ふだんの選び方など“生活習慣”と“深層心理”から、あなたのリスク許容度を5段階で診断。参考ポートフォリオの配分イメージも表示します。全24問・約4分。">
 <meta name="keywords" content="リスク許容度,診断,投資タイプ,深層心理,ポートフォリオ,資産運用,心理テスト">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0c1018">
+<meta name="theme-color" content="#ffffff">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="リスク許容度診断">
 <link rel="canonical" href="https://example.com/">
 
@@ -51,10 +50,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0c1018; --ink-2:#121826; --panel:#161d2e; --panel-2:#1b2436;
-    --line:#2a3550; --text:#e8edf7; --muted:#8b97b3;
-    --gold:#d8a657; --gold-soft:#e8c489; --teal:#46b6a8; --rose:#d9657a;
-    --shadow:0 30px 70px -25px rgba(0,0,0,.8);
+    --bg:#f4f7f5; --surface:#ffffff; --panel:#f6f9f7; --panel-2:#eef3f0;
+    --line:#e2e8e4; --line-2:#d6ded9;
+    --text:#162019; --muted:#5e6b64; --faint:#8a958f;
+    --green:#15a36e; --green-deep:#0e7f56; --green-soft:#3fbf8c; --green-tint:#e8f6ef;
+    --amber:#caa23f; --rose:#d06077;
+    --shadow:0 24px 60px -28px rgba(20,60,40,.28);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%}
@@ -62,9 +63,9 @@
   body{
     font-family:"Zen Kaku Gothic New",sans-serif;
     background:
-      radial-gradient(1100px 700px at 80% -10%, rgba(216,166,87,.14), transparent 55%),
-      radial-gradient(900px 700px at 5% 110%, rgba(70,182,168,.12), transparent 55%),
-      var(--ink);
+      radial-gradient(900px 600px at 85% -8%, rgba(21,163,110,.10), transparent 55%),
+      radial-gradient(800px 600px at 0% 108%, rgba(21,163,110,.07), transparent 55%),
+      var(--bg);
     color:var(--text); min-height:100%;
     display:flex; align-items:center; justify-content:center;
     padding:calc(28px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
@@ -73,90 +74,90 @@
   }
   .shell{width:100%; max-width:680px;}
   .card{
-    position:relative; background:linear-gradient(180deg,var(--panel),var(--ink-2));
+    position:relative; background:var(--surface);
     border:1px solid var(--line); border-radius:24px;
     box-shadow:var(--shadow); overflow:hidden;
   }
-  .card::before{content:"";position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(700px 200px at 50% -40%, rgba(216,166,87,.10), transparent 60%);}
-  .pad{padding:38px 34px}
-  @media(max-width:520px){.pad{padding:24px 18px}}
+  .card::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;
+    background:linear-gradient(90deg,var(--green-soft),var(--green),var(--green-deep));}
+  .pad{padding:40px 34px 38px}
+  @media(max-width:520px){.pad{padding:30px 18px 26px}}
   .eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;
-    color:var(--gold);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
-  .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+    color:var(--green-deep);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--green),transparent)}
   h1{font-family:"Shippori Mincho",serif;font-weight:800;line-height:1.28;letter-spacing:.01em;
-    font-size:clamp(25px,6vw,38px);margin-bottom:18px;}
-  h1 .accent{color:var(--gold-soft)}
+    font-size:clamp(25px,6vw,38px);margin-bottom:18px;color:var(--text)}
+  h1 .accent{color:var(--green-deep)}
   .lead{color:var(--muted);font-size:15px;line-height:1.95;margin-bottom:26px}
   @media(max-width:520px){.lead{font-size:14px;line-height:1.85}}
   .axes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
   @media(max-width:520px){.axes{grid-template-columns:1fr}}
-  .axis{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:16px;}
+  .axis{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;}
   .axis .t{font-family:"Shippori Mincho",serif;font-weight:700;font-size:15px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
   .dot{width:8px;height:8px;border-radius:50%}
-  .dot.g{background:var(--gold)} .dot.tl{background:var(--teal)}
+  .dot.g{background:var(--green)} .dot.tl{background:var(--green-soft)}
   .axis ul{list-style:none;font-size:12.5px;color:var(--muted);line-height:1.95}
-  .axis li::before{content:"・";color:var(--gold);margin-right:2px}
-  .howto{background:var(--panel-2);border:1px dashed var(--line);border-radius:12px;
-    padding:14px 16px;font-size:12.5px;color:var(--muted);line-height:1.9;margin-bottom:26px}
-  .howto b{color:var(--gold-soft);font-weight:700}
+  .axis li::before{content:"・";color:var(--green);margin-right:2px}
+  .howto{background:var(--green-tint);border:1px solid rgba(21,163,110,.22);border-radius:12px;
+    padding:14px 16px;font-size:12.5px;color:var(--green-deep);line-height:1.9;margin-bottom:26px}
+  .howto b{color:var(--green-deep);font-weight:700}
   .btn{width:100%;border:none;cursor:pointer;font-family:"Zen Kaku Gothic New",sans-serif;
-    font-weight:700;font-size:16px;color:#1a1206;
-    background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+    font-weight:700;font-size:16px;color:#ffffff;
+    background:linear-gradient(135deg,var(--green-soft),var(--green));
     padding:17px 20px;border-radius:14px;letter-spacing:.04em;
-    transition:transform .15s ease, box-shadow .25s ease;box-shadow:0 14px 30px -12px rgba(216,166,87,.6);
+    transition:transform .15s ease, box-shadow .25s ease;box-shadow:0 14px 28px -12px rgba(21,163,110,.55);
     min-height:54px;touch-action:manipulation;}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 20px 38px -12px rgba(216,166,87,.7)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 20px 36px -12px rgba(21,163,110,.6)}
   .btn:active{transform:translateY(0)}
-  .btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line);box-shadow:none;font-weight:500;}
-  .btn.ghost:hover{color:var(--text);border-color:var(--gold);transform:none}
-  .note{font-size:11.5px;color:var(--muted);line-height:1.8;margin-top:18px;opacity:.85}
+  .btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line-2);box-shadow:none;font-weight:500;}
+  .btn.ghost:hover{color:var(--green-deep);border-color:var(--green);transform:none}
+  .note{font-size:11.5px;color:var(--faint);line-height:1.8;margin-top:18px}
   .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
-  .cat{font-size:11px;letter-spacing:.22em;color:var(--gold);font-weight:700;text-transform:uppercase}
+  .cat{font-size:11px;letter-spacing:.22em;color:var(--green-deep);font-weight:700;text-transform:uppercase}
   .count{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-  .bar{height:5px;border-radius:99px;background:var(--panel-2);overflow:hidden;margin-bottom:30px}
-  .bar > i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .4s cubic-bezier(.3,.8,.3,1)}
-  .qdim{font-size:12px;color:var(--muted);letter-spacing:.05em;margin-bottom:10px}
+  .bar{height:6px;border-radius:99px;background:var(--panel-2);overflow:hidden;margin-bottom:30px}
+  .bar > i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--green-soft),var(--green));transition:width .4s cubic-bezier(.3,.8,.3,1)}
+  .qdim{font-size:12px;color:var(--faint);letter-spacing:.05em;margin-bottom:10px}
   .qtext{font-family:"Shippori Mincho",serif;font-weight:700;font-size:clamp(18px,4.6vw,23px);line-height:1.55;margin-bottom:26px}
   .opts{display:flex;flex-direction:column;gap:11px}
-  .opt{text-align:left;cursor:pointer;background:var(--panel-2);border:1px solid var(--line);
+  .opt{text-align:left;cursor:pointer;background:var(--surface);border:1px solid var(--line-2);
     border-radius:13px;padding:15px 16px;color:var(--text);font-size:14.5px;font-family:inherit;
-    line-height:1.5;display:flex;align-items:center;gap:13px;transition:border-color .18s, background .18s, transform .12s;
+    line-height:1.5;display:flex;align-items:center;gap:13px;transition:border-color .18s, background .18s, transform .12s, box-shadow .18s;
     min-height:54px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-  .opt:hover{border-color:var(--gold);background:#1f2840;transform:translateX(3px)}
-  .opt:active{background:#1f2840}
-  .opt .mk{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);
-    display:grid;place-items:center;font-size:11px;color:var(--muted);font-weight:700;transition:.18s;}
-  .opt:hover .mk{border-color:var(--gold);color:var(--gold)}
+  .opt:hover{border-color:var(--green);background:var(--green-tint);transform:translateX(3px);box-shadow:0 6px 16px -10px rgba(21,163,110,.5)}
+  .opt:active{background:var(--green-tint)}
+  .opt .mk{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-2);
+    display:grid;place-items:center;font-size:11px;color:var(--faint);font-weight:700;transition:.18s;}
+  .opt:hover .mk{border-color:var(--green);color:var(--green-deep)}
   .backrow{margin-top:22px}
   .back{background:none;border:none;color:var(--muted);font-family:inherit;font-size:13px;cursor:pointer;padding:8px 0;min-height:40px}
-  .back:hover{color:var(--text)} .back[disabled]{opacity:.3;cursor:default}
+  .back:hover{color:var(--green-deep)} .back[disabled]{opacity:.35;cursor:default}
   .result-head{text-align:center;margin-bottom:8px}
   .stars{font-size:22px;letter-spacing:6px;margin-bottom:8px}
-  .star-on{color:var(--gold)} .star-off{color:#2a3550}
+  .star-on{color:var(--green)} .star-off{color:#d6ded9}
   .score-num{font-family:"Shippori Mincho",serif;font-weight:800;font-size:60px;line-height:1;
-    color:var(--gold-soft);font-variant-numeric:tabular-nums;}
-  .score-num span{font-size:22px;color:var(--muted)}
+    color:var(--green-deep);font-variant-numeric:tabular-nums;}
+  .score-num span{font-size:22px;color:var(--faint)}
   .type-name{font-family:"Shippori Mincho",serif;font-weight:800;font-size:26px;margin:12px 0 6px}
-  .type-sub{color:var(--muted);font-size:12px;letter-spacing:.18em}
+  .type-sub{color:var(--faint);font-size:12px;letter-spacing:.18em}
   .type-desc{color:var(--muted);font-size:14px;line-height:1.95;margin:18px 0 26px;text-align:center}
-  .sec-title{font-family:"Shippori Mincho",serif;font-weight:700;font-size:15px;color:var(--gold-soft);
+  .sec-title{font-family:"Shippori Mincho",serif;font-weight:700;font-size:15px;color:var(--green-deep);
     margin:30px 0 14px;display:flex;align-items:center;gap:9px}
-  .sec-title::before{content:"";width:14px;height:2px;background:var(--gold)}
+  .sec-title::before{content:"";width:14px;height:2px;background:var(--green)}
   .radar-wrap{display:flex;justify-content:center;margin:6px 0 6px}
   .radar-wrap svg{max-width:100%;height:auto}
   .dual{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
-  .metric{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .metric{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
   .metric .lab{font-size:11.5px;color:var(--muted);letter-spacing:.1em;margin-bottom:6px}
-  .metric .val{font-family:"Shippori Mincho",serif;font-weight:700;font-size:22px}
-  .metric .mini{height:5px;border-radius:99px;background:#0f1626;margin-top:10px;overflow:hidden}
+  .metric .val{font-family:"Shippori Mincho",serif;font-weight:700;font-size:22px;color:var(--text)}
+  .metric .mini{height:6px;border-radius:99px;background:#e6ece9;margin-top:10px;overflow:hidden}
   .metric .mini > i{display:block;height:100%;border-radius:99px;width:0}
   .bars{display:flex;flex-direction:column;gap:14px}
   .brow .bl{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px}
   .brow .bl b{font-weight:500;color:var(--text)}
-  .brow .bl span{color:var(--gold-soft);font-variant-numeric:tabular-nums;font-weight:700}
-  .track{height:8px;border-radius:99px;background:#0f1626;overflow:hidden}
-  .track > i{display:block;height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .8s cubic-bezier(.3,.9,.3,1)}
+  .brow .bl span{color:var(--green-deep);font-variant-numeric:tabular-nums;font-weight:700}
+  .track{height:8px;border-radius:99px;background:#e6ece9;overflow:hidden}
+  .track > i{display:block;height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,var(--green-soft),var(--green));transition:width .8s cubic-bezier(.3,.9,.3,1)}
   /* portfolio */
   .pf-bar{display:flex;height:30px;border-radius:9px;overflow:hidden;margin-bottom:14px;border:1px solid var(--line)}
   .pf-bar > div{height:100%;transition:width .9s cubic-bezier(.3,.9,.3,1)}
@@ -166,27 +167,14 @@
   .pf-item .sw{width:11px;height:11px;border-radius:3px;flex:0 0 auto}
   .pf-item .nm{color:var(--text)} .pf-item .pc{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums}
   .pf-note{font-size:12px;color:var(--muted);line-height:1.85;margin-top:14px}
-  .disc{background:rgba(217,101,122,.07);border:1px solid rgba(217,101,122,.28);border-radius:12px;
-    padding:14px 15px;font-size:12px;color:#e7b9c2;line-height:1.85;margin:26px 0 20px;}
+  .disc{background:rgba(208,96,119,.07);border:1px solid rgba(208,96,119,.28);border-radius:12px;
+    padding:14px 15px;font-size:12px;color:#9d4458;line-height:1.85;margin:26px 0 20px;}
   .disc b{color:var(--rose)}
   .hidden{display:none}
   .fade{animation:fade .45s ease both}
   @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
-  .footer-tag{text-align:center;color:var(--muted);font-size:10.5px;letter-spacing:.2em;margin-top:18px;opacity:.6}
-  /* ---- blue chrome blob + ticker ---- */
-  .ticker{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;
-    font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
-    font-size:10.5px;letter-spacing:.18em;color:#9fb0d6;margin-bottom:22px;
-    padding-bottom:14px;border-bottom:1px solid var(--line);}
-  .ticker span{white-space:nowrap;opacity:.85}
-  .ticker b{color:var(--gold-soft);font-weight:500}
-  .hero-blob{position:relative;height:190px;margin:4px 0 8px;display:flex;align-items:center;justify-content:center;}
-  .hero-blob svg{width:300px;height:190px;filter:drop-shadow(0 24px 50px rgba(40,90,220,.45))}
-  @media(max-width:520px){.hero-blob{height:150px}.hero-blob svg{width:230px;height:150px}}
-  .blob-anim{animation:blobfloat 9s ease-in-out infinite}
-  @keyframes blobfloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(-3deg)}}
-  @media (prefers-reduced-motion: reduce){.blob-anim{animation:none}}
+  .footer-tag{text-align:center;color:var(--faint);font-size:10.5px;letter-spacing:.2em;margin-top:18px;opacity:.7}
 </style>
 </head>
 <body>
@@ -195,50 +183,6 @@
     <div class="pad">
       <!-- INTRO -->
       <section id="intro" class="fade">
-        <div class="ticker" id="ticker">
-          <span><b>/TYO</b> <i id="t-tyo">--·--·--</i></span>
-          <span><b>/LON</b> <i id="t-lon">--·--·--</i></span>
-          <span><b>/NYC</b> <i id="t-nyc">--·--·--</i></span>
-          <span><b>/PAR</b> <i id="t-par">--·--·--</i></span>
-        </div>
-        <div class="hero-blob" aria-hidden="true">
-          <svg class="blob-anim" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="bl1" cx="35%" cy="35%" r="80%">
-                <stop offset="0%" stop-color="#7ff0ff"/>
-                <stop offset="35%" stop-color="#3aa0ff"/>
-                <stop offset="70%" stop-color="#2152e8"/>
-                <stop offset="100%" stop-color="#1230a8"/>
-              </radialGradient>
-              <radialGradient id="bl2" cx="70%" cy="60%" r="75%">
-                <stop offset="0%" stop-color="#6be0ff" stop-opacity=".9"/>
-                <stop offset="55%" stop-color="#3457f0" stop-opacity=".6"/>
-                <stop offset="100%" stop-color="#1230a8" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity=".75"/>
-                <stop offset="40%" stop-color="#bfe6ff" stop-opacity=".15"/>
-                <stop offset="100%" stop-color="#7c5cff" stop-opacity=".25"/>
-              </linearGradient>
-            </defs>
-            <path fill="url(#bl1)" d="M70 95 C40 40 95 18 135 42 C150 52 150 78 150 95 C150 112 150 138 135 148 C95 172 40 150 70 95 Z">
-              <animate attributeName="d" dur="11s" repeatCount="indefinite"
-                values="M70 95 C40 40 95 18 135 42 C150 52 150 78 150 95 C150 112 150 138 135 148 C95 172 40 150 70 95 Z;
-                        M65 95 C32 48 100 22 138 48 C152 58 150 80 150 95 C150 110 152 132 138 142 C100 168 32 142 65 95 Z;
-                        M70 95 C40 40 95 18 135 42 C150 52 150 78 150 95 C150 112 150 138 135 148 C95 172 40 150 70 95 Z"/>
-            </path>
-            <path fill="url(#bl1)" d="M230 95 C260 40 205 18 165 42 C150 52 150 78 150 95 C150 112 150 138 165 148 C205 172 260 150 230 95 Z">
-              <animate attributeName="d" dur="11s" repeatCount="indefinite"
-                values="M230 95 C260 40 205 18 165 42 C150 52 150 78 150 95 C150 112 150 138 165 148 C205 172 260 150 230 95 Z;
-                        M235 95 C268 48 200 22 162 48 C148 58 150 80 150 95 C150 110 148 132 162 142 C200 168 268 142 235 95 Z;
-                        M230 95 C260 40 205 18 165 42 C150 52 150 78 150 95 C150 112 150 138 165 148 C205 172 260 150 230 95 Z"/>
-            </path>
-            <ellipse cx="150" cy="95" rx="36" ry="30" fill="url(#bl1)"/>
-            <path fill="url(#bl2)" d="M70 95 C40 40 95 18 135 42 C150 52 150 78 150 95 C150 112 150 138 135 148 C95 172 40 150 70 95 Z" opacity=".7"/>
-            <path fill="url(#sheen)" d="M95 55 C115 40 140 48 142 70 C143 86 120 92 105 88 C86 83 80 66 95 55 Z" opacity=".55"/>
-            <path fill="url(#sheen)" d="M205 55 C185 40 160 48 158 70 C157 86 180 92 195 88 C214 83 220 66 205 55 Z" opacity=".5"/>
-          </svg>
-        </div>
         <div class="eyebrow">Deep Psychology Analysis</div>
         <h1>深層心理から読み解く<br><span class="accent">リスク許容度</span>診断</h1>
         <p class="lead">投資の知識を問う質問はほとんどありません。一見投資と関係なさそうな“生活習慣”や“ふだんの選び方”から、あなたが無意識にリスクとどう向き合うかを読み解きます。ライフスタイルとリスク許容度の相関に着目した設計です。</p>
@@ -285,12 +229,12 @@
           <div class="metric">
             <div class="lab">深層心理スコア</div>
             <div class="val"><span id="mpsy">0</span></div>
-            <div class="mini"><i id="bpsy" style="background:linear-gradient(90deg,#e8c489,#d8a657)"></i></div>
+            <div class="mini"><i id="bpsy" style="background:linear-gradient(90deg,#3fbf8c,#15a36e)"></i></div>
           </div>
           <div class="metric">
             <div class="lab">生活習慣スコア</div>
             <div class="val"><span id="mlife">0</span></div>
-            <div class="mini"><i id="blife" style="background:linear-gradient(90deg,#46b6a8,#2f8f84)"></i></div>
+            <div class="mini"><i id="blife" style="background:linear-gradient(90deg,#7fd0ad,#0e7f56)"></i></div>
           </div>
         </div>
         <div class="sec-title">5つの傾向</div>
@@ -311,7 +255,6 @@
 </div>
 <script>
 // score: 高いほどリスク許容度が高い(0〜4) / radar:5軸 / group: psy or life
-// 軸 A=挑戦志向 B=ストレス耐性 C=決断スピード D=投資・お金への関与 E=生活の身軽さ(備え/ライフ)
 const QUESTIONS = [
   {cat:"LIFESTYLE",radar:"挑戦志向",group:"life",dim:"スポーツ習慣",
    q:"普段、行っているスポーツや運動はありますか？",
@@ -387,7 +330,7 @@ const QUESTIONS = [
    opts:[{t:"扶養家族が多く守るものが大きい",s:1},{t:"配偶者・子どもがいる",s:2},{t:"パートナーはいるが扶養なし",s:3},{t:"独身・扶養なしで身軽",s:4}]},
 ];
 const RADAR_AXES = ["挑戦志向","ストレス耐性","決断スピード","投資関与度","生活の身軽さ"];
-const PF_COLORS = {cash:"#46b6a8", bond:"#6f86c4", jp:"#d8a657", dev:"#e08a64", alt:"#d9657a"};
+const PF_COLORS = {cash:"#0e7f56", bond:"#3fbf8c", jp:"#8fd3b5", dev:"#caa23f", alt:"#d06077"};
 const PF_LABELS = {cash:"現金・預金", bond:"債券", jp:"国内株式", dev:"先進国株式", alt:"新興国株・オルタナ"};
 const TYPES = [
   {min:0,name:"安定重視型",sub:"CONSERVATIVE",stars:1,
@@ -425,7 +368,7 @@ function render(){
     const b=document.createElement("button");b.className="opt";
     b.innerHTML='<span class="mk">'+L[i]+'</span><span>'+o.t+'</span>';
     b.onclick=()=>choose(i);
-    if(answers[idx]===i){b.querySelector(".mk").style.borderColor="var(--gold)";b.querySelector(".mk").style.color="var(--gold)";}
+    if(answers[idx]===i){b.querySelector(".mk").style.borderColor="var(--green)";b.querySelector(".mk").style.color="var(--green-deep)";}
     wrap.appendChild(b);
   });
 }
@@ -467,7 +410,6 @@ function showResult(score,psyScore,lifeScore,dimPct){
     bars.appendChild(row);
     setTimeout(()=>{row.querySelector("i").style.width=v+"%";},200+k*90);
   });
-  // portfolio
   const pf=t.pf;const order=["cash","bond","jp","dev","alt"];
   const pfbar=$("pfbar");pfbar.innerHTML="";
   order.forEach(k=>{if(pf[k]>0){const d=document.createElement("div");d.style.background=PF_COLORS[k];d.style.width="0%";d.title=PF_LABELS[k]+" "+pf[k]+"%";pfbar.appendChild(d);}});
@@ -483,28 +425,16 @@ function buildRadar(dimPct){
   const size=300,cx=size/2,cy=size/2,R=98,n=RADAR_AXES.length;
   const ang=i=>(-Math.PI/2)+i*(2*Math.PI/n);
   const pt=(i,rad)=>[cx+Math.cos(ang(i))*rad,cy+Math.sin(ang(i))*rad];
-  let grid="";[0.25,0.5,0.75,1].forEach(f=>{let p="";for(let i=0;i<n;i++){const[x,y]=pt(i,R*f);p+=x.toFixed(1)+","+y.toFixed(1)+" ";}grid+='<polygon points="'+p.trim()+'" fill="none" stroke="#2a3550" stroke-width="1"/>';});
-  let sp="";for(let i=0;i<n;i++){const[x,y]=pt(i,R);sp+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="#2a3550" stroke-width="1"/>';}
+  let grid="";[0.25,0.5,0.75,1].forEach(f=>{let p="";for(let i=0;i<n;i++){const[x,y]=pt(i,R*f);p+=x.toFixed(1)+","+y.toFixed(1)+" ";}grid+='<polygon points="'+p.trim()+'" fill="none" stroke="#d6ded9" stroke-width="1"/>';});
+  let sp="";for(let i=0;i<n;i++){const[x,y]=pt(i,R);sp+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="#d6ded9" stroke-width="1"/>';}
   let dp="";for(let i=0;i<n;i++){const v=dimPct[RADAR_AXES[i]]/100;const[x,y]=pt(i,R*v);dp+=x.toFixed(1)+","+y.toFixed(1)+" ";}
-  let dots="";for(let i=0;i<n;i++){const v=dimPct[RADAR_AXES[i]]/100;const[x,y]=pt(i,R*v);dots+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.5" fill="#e8c489"/>';}
-  let lb="";for(let i=0;i<n;i++){const[x,y]=pt(i,R+24);let a="middle";if(x<cx-8)a="end";else if(x>cx+8)a="start";const dy=y<cy-10?-2:y>cy+10?12:4;lb+='<text x="'+x.toFixed(1)+'" y="'+(y+dy).toFixed(1)+'" fill="#8b97b3" font-size="11" font-family="Zen Kaku Gothic New,sans-serif" text-anchor="'+a+'">'+RADAR_AXES[i]+'</text>';}
-  return '<svg viewBox="0 0 '+size+' '+size+'" width="300" height="300" role="img" aria-label="リスク許容度レーダーチャート"><defs><radialGradient id="rg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="rgba(216,166,87,.45)"/><stop offset="100%" stop-color="rgba(70,182,168,.25)"/></radialGradient></defs>'+grid+sp+'<polygon points="'+dp.trim()+'" fill="url(#rg)" stroke="#d8a657" stroke-width="2" stroke-linejoin="round"/>'+dots+lb+'</svg>';
+  let dots="";for(let i=0;i<n;i++){const v=dimPct[RADAR_AXES[i]]/100;const[x,y]=pt(i,R*v);dots+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.5" fill="#0e7f56"/>';}
+  let lb="";for(let i=0;i<n;i++){const[x,y]=pt(i,R+24);let a="middle";if(x<cx-8)a="end";else if(x>cx+8)a="start";const dy=y<cy-10?-2:y>cy+10?12:4;lb+='<text x="'+x.toFixed(1)+'" y="'+(y+dy).toFixed(1)+'" fill="#5e6b64" font-size="11" font-family="Zen Kaku Gothic New,sans-serif" text-anchor="'+a+'">'+RADAR_AXES[i]+'</text>';}
+  return '<svg viewBox="0 0 '+size+' '+size+'" width="300" height="300" role="img" aria-label="リスク許容度レーダーチャート"><defs><radialGradient id="rg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="rgba(21,163,110,.40)"/><stop offset="100%" stop-color="rgba(63,191,140,.16)"/></radialGradient></defs>'+grid+sp+'<polygon points="'+dp.trim()+'" fill="url(#rg)" stroke="#15a36e" stroke-width="2" stroke-linejoin="round"/>'+dots+lb+'</svg>';
 }
 function restart(){answers.fill(null);idx=0;$("result").classList.add("hidden");$("intro").classList.remove("hidden");$("intro").classList.add("fade");window.scrollTo(0,0);}
 function copyResult(){const done=()=>{const b=$("copybtn");const o=b.textContent;b.textContent="コピーしました ✓";setTimeout(()=>b.textContent=o,1600);};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(LAST_SUMMARY).then(done).catch(()=>fb(done));}else fb(done);}
 function fb(done){const ta=document.createElement("textarea");ta.value=LAST_SUMMARY;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(ta);done();}
-// ---- city ticker clock ----
-function tickClock(){
-  const z={ "t-tyo":"Asia/Tokyo","t-lon":"Europe/London","t-nyc":"America/New_York","t-par":"Europe/Paris" };
-  for(const id in z){
-    try{
-      const p=new Intl.DateTimeFormat("en-GB",{timeZone:z[id],hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).formatToParts(new Date());
-      const g=t=>(p.find(x=>x.type===t)||{}).value||"--";
-      const el=document.getElementById(id);if(el)el.textContent=g("hour")+" "+g("minute")+" "+g("second");
-    }catch(e){}
-  }
-}
-tickClock();setInterval(tickClock,1000);
 </script>
 </body>
 </html>
